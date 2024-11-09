@@ -359,7 +359,7 @@ def calcula_VarCF(Voc, EC):
     return VarCF
 #*******************************
 def I_arco_inter1 (EC, I_bf, lg_Ibf, lg_gap):
-    I_arc_600 = (ecuacion_1 (EC, "600V", I_bf, lg_Ibf,lg_gap))
+    I_arc_600 = ecuacion_1 (EC, "600V", I_bf, lg_Ibf,lg_gap)
     print ("I_arc_600 (kA): ", I_arc_600) #Corriente rms promedio
     return I_arc_600
 
@@ -421,6 +421,8 @@ def calcula_CF (enclosure_type, EC, width, height, Box_type, Voc):
         width_1 = calcula_width (EC, width, Voc)
         height_1 = calcula_height (EC, height, Voc)
         EES = ecuacion_13 (height_1, width_1)
+        if EES < 20:
+            EES = 20
         CF = abs( ecuacion_14 ( Box_type["Typical"][EC]["b1"] , Box_type["Typical"][EC]["b2"], Box_type["Typical"][EC]["b3"], EES) ) #####################################REVISAR VALOR ABSOLUTO
         print (">>> Ajuste de ancho y altura <<<\n", "width_1: ", width_1)
         print ("height_1: ", height_1, "\n")
@@ -466,10 +468,15 @@ def calc_E_AFB2 (dis, EC, I_bf, I_arc_600, I_arc_2700, I_arc_14300, T, CF, Voc, 
 
     if Voc > 600 and Voc <= 2.7:  
         E = E_3   
-        print (">>> Energia Incidente final <<<\n", "E (J/mc2): ", E, "\n") 
+        print (">>> Energia Incidente final <<<\n", "E (J/mc2): ", E) 
+        E = E/4.184 #Convierte la energia incidente a cal/cm2
+        print ("E (cal/cm2): ", E, "\n")
+
     elif Voc > 2.7:
         E = E_2
-        print (">>> Energia Incidente final <<<\n", "E (J/mc2): ", E, "\n")
+        print (">>> Energia Incidente final <<<\n", "E (J/mc2): ", E)
+        E = E/4.184 #Convierte la energia incidente a cal/cm2
+        print ("E (cal/cm2): ", E, "\n")
 
     #>>>>>>> NOTE: PASO 6 <<<<<<<
     lg_T = math.log10(20/T)
@@ -507,7 +514,9 @@ def calc_E_AFB1 (dis, EC, I_bf, I_arc_600, I_arc, T, CF, lg_Ibf, lg_gap):
 
     #>>>>>>> NOTE: PASO 5 <<<<<<<
     E = E_600_menor  
-    print ("la energia incidente final es \n", "E: ", E, " J/cm2", "\n") 
+    print (">>> Energia Incidente final <<<\n", "E (J/mc2): ", E) 
+    E = E/4.184 #Convierte la energia incidente a cal/cm2
+    print ("E (cal/cm2): ", E, "\n")
 
     #>>>>>>> NOTE: PASO 6 <<<<<<<
     lg_T = math.log10(20/T)
@@ -521,7 +530,7 @@ def calc_E_AFB1 (dis, EC, I_bf, I_arc_600, I_arc, T, CF, lg_Ibf, lg_gap):
 def I_arco_inter_min1 (Voc, EC, I_arc_600):
     #>>>>>>> NOTE: PASO 8 <<<<<<<
     VarCF = calcula_VarCF(Voc, EC)
-    CF_VarCF = 1-0.5*VarCF
+    CF_VarCF = 1-(0.5*VarCF)
     print ("\n>>> Factor de correccion <<<\n", "CF_VarCF: ", CF_VarCF, "\n")
 
     #>>>>>>> NOTE: PASO 9 <<<<<<< POSIBLEMENTE HACER EL CALCULO DIRECTO DE LA ECUACION 2

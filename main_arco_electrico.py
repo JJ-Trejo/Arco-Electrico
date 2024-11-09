@@ -1099,7 +1099,7 @@ def ventana_toplevel_2018():
             if variable_VOA.get() == True:
                 #CALCULAR IARC NORMAL | enviar diccionario system_data_VOA
                 main(system_data_VOA)
-                print (system_data_VOA)
+                # print (system_data_VOA)
                 var_iarc_voa_2018.set("{:.3f}".format(system_data_VOA["I_arc"])) # Usar formato para limitar a 3 decimales
 
             if variable_HOA.get() == False:
@@ -1107,7 +1107,7 @@ def ventana_toplevel_2018():
             if variable_HOA.get() == True:
                 #CALCULAR IARC NORMAL | enviar diccionario system_data_HOA
                 main(system_data_HOA)
-                print (system_data_HOA)
+                # print (system_data_HOA)
                 var_iarc_hoa_2018.set("{:.3f}".format(system_data_HOA["I_arc"])) # Usar formato para limitar a 3 decimales
         
         def inicia_primer_calculo_BOX():
@@ -1117,8 +1117,7 @@ def ventana_toplevel_2018():
             if variable_VCB.get() == True:
                 #CALCULAR IARC NORMAL | enviar diccionario system_data_VCB
                 main(system_data_VCB)
-                print (system_data_VCB)
-                print ("I_arc: ", system_data_VCB["I_arc"])
+                # print (system_data_VCB)
                 var_iarc_vcb_2018.set("{:.3f}".format(system_data_VCB["I_arc"])) # Usar formato para limitar a 3 decimales
 
             if variable_VCBB.get() == False:
@@ -1126,7 +1125,7 @@ def ventana_toplevel_2018():
             if variable_VCBB.get() == True:
                 #CALCULAR IARC NORMAL | enviar diccionario system_data_VCBB
                 main(system_data_VCBB)
-                print (system_data_VCBB)
+                # print (system_data_VCBB)
                 var_iarc_vcbb_2018.set("{:.3f}".format(system_data_VCBB["I_arc"])) # Usar formato para limitar a 3 decimales
 
             if variable_HCB.get() == False:
@@ -1134,7 +1133,7 @@ def ventana_toplevel_2018():
             if variable_HCB.get() == True:
                 #CALCULAR IARC NORMAL | enviar diccionario system_data_HCB
                 main(system_data_HCB)
-                print (system_data_HCB)
+                # print (system_data_HCB)
                 var_iarc_hcb_2018.set("{:.3f}".format(system_data_HCB["I_arc"])) # Usar formato para limitar a 3 decimales
 
         # ******************** OBTIENE LOS DATOS DEL SISTEMA INGRESADOS | IEEE 1584 2018 ********************

@@ -171,7 +171,7 @@ def main_2002 (dic_system_data):
         #ARCING CURRENT
         lg_Ia, I_arc = ecuacion_1(K, lg_Ibf, Voc, gap)
         dic_system_data["lg_Ia"] = lg_Ia
-        dic_system_data["Ia_arc"] = I_arc
+        dic_system_data["I_arc"] = I_arc
         
     elif Voc > 1 and Voc <= 15.0:
         #ARCING CURRENT

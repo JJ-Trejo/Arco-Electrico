@@ -551,8 +551,7 @@ entrada_v2002.grid(row=0, column=1, sticky="w", padx=5, pady=5)
 # >>>>> Label Voltaje del sistema | IEEE 1584 2002
 lb_volt_u_2002 = tk.Label(cont_2002, text="kV")
 lb_volt_u_2002.grid(row=0, column=2, sticky="w", padx=5, pady=5)
-var_entrada_v2002.trace("w", rellena_typicalequipment_2002) #trace y "w" detectan cuando hay un cambio en la variable texto1
-
+var_entrada_v2002.trace("w", rellena_typicalequipment_2002) #trace y "w" detectan cuando hay un cambio en la variable de control del voltaje
 
 # >>>>> Variable de control Corriente de corto circuito | IEEE 1584 2002
 var_icc_2002 = tk.StringVar(value=15)

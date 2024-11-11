@@ -234,14 +234,14 @@ def ecuacion_10 (EC, I_bf, lg_T, lg_Ibf, lg_gap, I_arc_600, lg_Iarc, lg_CF):
     k12 = tabla_3[EC]["k12"]
     k13 = tabla_3[EC]["k13"]
 
-    AFB_600 = 10**((k1+k2*lg_gap + (k3*I_arc_600/(
+    AFB_600 = 10**((k1+k2*lg_gap + ((k3*I_arc_600)/(
         k4*I_bf**7 +
         k5*I_bf**6 +
         k6*I_bf**5 +
         k7*I_bf**4 +
         k8*I_bf**3 +
         k9*I_bf**2 +
-        k10*I_bf)) + (k11*lg_Ibf+k13*lg_Iarc+lg_CF-lg_T))/-k12)
+        k10*I_bf)) + (k11*lg_Ibf+k13*lg_Iarc+lg_CF-lg_T))/(-k12))
     return AFB_600
 #*******************************
 def ecuacion_11 (width, Voc, A, B):
@@ -437,7 +437,7 @@ def calcula_CF (enclosure_type, EC, width, height, Box_type, Voc):
         print ("height_1: ", height_1)
         print ("EES: ", EES)
         print (">>> Factor de Correccion <<<\n", "CF: ",CF, "\n")
-    elif enclosure_type == "open": #"open" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    elif enclosure_type == "open":
         CF = 1
     else: print("ERROR: ENCLOSURE TYPE")
     return CF

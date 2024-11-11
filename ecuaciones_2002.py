@@ -4,11 +4,13 @@ import math
 def ecuacion_1 (K, lg_Ibf, Voc, gap):
     lg_Ia = K + 0.662*lg_Ibf + 0.0966*Voc + 0.000526*gap + 0.5588*Voc*lg_Ibf - 0.00304*gap*lg_Ibf
     I_arc = 10**lg_Ia 
+    print (">>> Corriente de arco final <<< \n", "I_arc (kA): ", I_arc, "\n") #Corriente rms promedio
     return lg_Ia, I_arc
 
 def ecuacion_2 (lg_Ibf):
     lg_Ia = 0.00402 + 0.983*lg_Ibf
     I_arc = 10**lg_Ia
+    print (">>> Corriente de arco final <<< \n", "I_arc (kA): ", I_arc, "\n") #Corriente rms promedio
     return lg_Ia, I_arc
 
 # Incident Energy
@@ -20,7 +22,7 @@ def ecuacion_4 (K1, K2, lg_Ia, gap, Cf, tfalla, dis, xfactor):
 
     #NOTE: Ecuacion (6)
     E = 4.184*Cf*En*(tfalla/0.2)*((610**xfactor)/(dis**xfactor))
-
+    print (">>> Parametros de calculo <<<")
     print ("K1: ", K1)
     print ("K2: ", K2)
     print ("lg_Ia: ", lg_Ia)
@@ -28,7 +30,10 @@ def ecuacion_4 (K1, K2, lg_Ia, gap, Cf, tfalla, dis, xfactor):
     print ("Cf: ", Cf)
     print ("tfalla: ", tfalla)
     print ("dis: ", dis)
-    print ("xfactor: ", xfactor)
+    print ("xfactor: ", xfactor, "\n")
+    print (">>> Energia Incidente final <<<\n", "E (J/mc2): ", E)
+    E = E/4.184 #Convierte la energia incidente a cal/cm2
+    print ("E (cal/cm2): ", E, "\n") 
 
     return lg_En, En, E
 
@@ -36,6 +41,7 @@ def ecuacion_4 (K1, K2, lg_Ia, gap, Cf, tfalla, dis, xfactor):
 
 def ecuacion_8 (Cf, En, tfalla, EB, xfactor):
     AFB = (4.184*Cf*En*(tfalla/0.2)*((610**xfactor)/EB))**(1/xfactor)
+    print (">>> Limite de arco final <<<\n", "AFB (mm): ", AFB, "\n") 
     return AFB
 
 # Current limiting fuses
@@ -161,6 +167,7 @@ def obtener_parametros_mainafpmin_2002(dic_system_data):
     return K1, K2, Cf, lg_Ia_min, gap, tfalla_min, dis, xfactor
 
 def main_2002 (dic_system_data):
+    print ("#################### INICIO main_2002 | I_arc | ", dic_system_data["tipo_equipo"], " ####################", "\n")
     Voc, lg_Ibf, I_bf, gap, K, K1, K2, Cf = obtener_parametros_main_2002(dic_system_data)
     dic_system_data["K"] = K
     dic_system_data["K1"] = K1
@@ -172,19 +179,27 @@ def main_2002 (dic_system_data):
         lg_Ia, I_arc = ecuacion_1(K, lg_Ibf, Voc, gap)
         dic_system_data["lg_Ia"] = lg_Ia
         dic_system_data["I_arc"] = I_arc
+        print("Datos recopilados:")
+        print (dic_system_data, "\n")
+        print ("#################### FIN main_2002 | I_arc | ", dic_system_data["tipo_equipo"], " ####################", "\n")
         
     elif Voc > 1 and Voc <= 15.0:
         #ARCING CURRENT
         lg_Ia, I_arc = ecuacion_2(lg_Ibf)
         dic_system_data["lg_Ia"] = lg_Ia
         dic_system_data["I_arc"] = I_arc
+        print("Datos recopilados:")
+        print (dic_system_data, "\n")
+        print ("#################### FIN main_2002 | I_arc | ", dic_system_data["tipo_equipo"], " ####################", "\n")
+
     else:
         print ("ALERTA: Voltaje fuera del rango \n")
 
 def main_afp_2002(dic_system_data):
+    print ("#################### INICIO main_afp_2002 | calculo de E, AFB, I_arc_min | ", dic_system_data["tipo_equipo"] ,  "####################", "\n")
     K1, K2, Cf, lg_Ia, gap, tfalla, dis, xfactor = obtener_parametros_mainafp_2002(dic_system_data)
     lg_En, En, E = ecuacion_4 (K1, K2, lg_Ia, gap, Cf, tfalla, dis, xfactor) #Calculo energia incidente
-    E = E/4.184 #Convierte la energia incidente a cal/cm2
+    # E = E/4.184 #Convierte la energia incidente a cal/cm2 NOTE: Este paso se hace en lac ecuacion (4)
     dic_system_data["lg_En"] = lg_En
     dic_system_data["En"] = En
     dic_system_data["E"] = E
@@ -192,11 +207,15 @@ def main_afp_2002(dic_system_data):
     dic_system_data["EB"] = EB
     AFB = ecuacion_8(Cf, En, tfalla, EB, xfactor) #Calculo flash protection boundary
     dic_system_data["AFB"] = AFB
+    print("Datos recopilados:")
+    print (dic_system_data, "\n")
+    print ("#################### FIN main_afp_2002 | calculo de E, AFB, I_arc_min | ", dic_system_data["tipo_equipo"] ,  "####################", "\n")
 
 def main_afpmin_2002(dic_system_data):
+    print ("#################### INICIO main_afpmin_2002 | calculo de E_min, AFB_min | ", dic_system_data["tipo_equipo"] ,  "####################", "\n")
     K1, K2, Cf, lg_Ia_min, gap, tfalla_min, dis, xfactor = obtener_parametros_mainafpmin_2002(dic_system_data)
     lg_En_min, En_min, E_min = ecuacion_4 (K1, K2, lg_Ia_min, gap, Cf, tfalla_min, dis, xfactor) #Calculo energia incidente
-    E_min = E_min/4.184 #Convierte la energia incidente a cal/cm2
+    # E_min = E_min/4.184 #Convierte la energia incidente a cal/cm2 NOTE: Este paso se hace en lac ecuacion (4)
     dic_system_data["lg_En_min"] = lg_En_min
     dic_system_data["En_min"] = En_min
     dic_system_data["E_min"] = E_min
@@ -204,3 +223,6 @@ def main_afpmin_2002(dic_system_data):
     dic_system_data["EB_min"] = EB_min
     AFB_min = ecuacion_8(Cf, En_min, tfalla_min, EB_min, xfactor) #Calculo flash protection boundary
     dic_system_data["AFB_min"] = AFB_min
+    print("Datos recopilados:")
+    print (dic_system_data, "\n")
+    print ("#################### FIN main_afpmin_2002 | calculo de E_min, AFB_min | ", dic_system_data["tipo_equipo"] ,  "####################", "\n")

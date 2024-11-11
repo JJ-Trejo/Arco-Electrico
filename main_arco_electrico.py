@@ -665,7 +665,7 @@ def ventana_toplevel_2002():
         def inicia_primer_calculo_2002():
             #CALCULAR IARC NORMAL | enviar diccionario system_data_HCB
             main_2002(system_data_2002) #Llama a la función que realiza el promer calculo "I_arc"
-            print (system_data_2002)
+            # print (system_data_2002)
             var_iarc_2002.set("{:.3f}".format(system_data_2002["I_arc"])) # Usar formato para limitar a 3 decimales
             #Actualiza el valor de Iarc_min
             porcentaje_iarc = float(system_data_2002["I_arc"]) - (float(system_data_2002["I_arc"])*(iarc_variation.get()/100))
@@ -691,12 +691,9 @@ def ventana_toplevel_2002():
             boton_afpmin_2002.configure(state="active") #Activa el boton 1_2 para calcular la corriente de arco reducida
             var_e_2002.set("{:.3f}".format(system_data_2002["E"])) #Muestra el valor de la energia incidente en la pantalla
             var_afb_2002.set("{:.3f}".format(system_data_2002["AFB"])) #Muestra el valor del limite de arco eléctrico en la pantalla
-
             EPP = calcula_proteccion_epp(system_data_2002["E"]) #Llama a ala función que calcula la categoría de EPP
             var_epp_2002.set(value=EPP) #Muestra el valor de la categoría de EPP en la pantalla
-
-
-            print (system_data_2002)
+            # print (system_data_2002)
 
         def actualiza_tfallamin_2002():
             system_data_2002["I_arc_min"] = var_iarcmin_2002.get() #Se añade el valor de I_arc reducida al diccionario
@@ -704,8 +701,7 @@ def ventana_toplevel_2002():
             main_afpmin_2002 (system_data_2002) #Llama a la función que calcula E y AFB
             var_emin_2002.set("{:.3f}".format(system_data_2002["E_min"])) #Muestra el valor de la energia incidente en la pantalla
             var_afbmin_2002.set("{:.3f}".format(system_data_2002["AFB_min"])) #Muestra el valor del limite de arco eléctrico en la pantalla
-            print (system_data_2002)
-            
+            # print (system_data_2002)
             EPP = calcula_proteccion_epp(system_data_2002["E_min"]) #Llama a ala función que calcula la categoría de EPP
             var_eppmin_2002.set(value=EPP) #Muestra el valor de la categoría de EPP en la pantalla
 

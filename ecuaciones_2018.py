@@ -69,8 +69,6 @@ def obtener_parametros_afp_min1(system_data):
     lg_gap = math.log10(gap)  #logaritmo base 10 de "gap"
     
     return dis, EC, I_bf, I_arc_600_min, I_arc_min, Tmin, CF, lg_Ibf, lg_gap
-    pass
-
 
 def obtener_parametros_afp_min2(system_data):
     #Obtiene los parametros del diccionario recibido
@@ -360,11 +358,12 @@ def calcula_VarCF(Voc, EC):
 #*******************************
 def I_arco_inter1 (EC, I_bf, lg_Ibf, lg_gap):
     I_arc_600 = ecuacion_1 (EC, "600V", I_bf, lg_Ibf,lg_gap)
-    print ("I_arc_600 (kA): ", I_arc_600) #Corriente rms promedio
+    print (">>> Corriente de arco intermedia a 600V <<< \n", "I_arc_600 (kA): ", I_arc_600, "\n") #Corriente rms promedio
     return I_arc_600
 
 def I_arco_fin1 (Voc, I_bf, I_arc_600):
     I_arc = ecuacion_25 (Voc, I_arc_600, I_bf)
+    print (">>> Corriente de arco final <<< \n", "I_arc (kA): ", I_arc, "\n") #Corriente rms promedio
     return I_arc
 
 def I_arco_inter2 (EC, I_bf, lg_Ibf, lg_gap):
@@ -504,7 +503,7 @@ def calc_E_AFB2 (dis, EC, I_bf, I_arc_600, I_arc_2700, I_arc_14300, T, CF, Voc, 
 
     return E, AFB
 
-def calc_E_AFB1 (dis, EC, I_bf, I_arc_600, I_arc, T, CF, lg_Ibf, lg_gap):
+def calc_E_AFB1 (dis, EC, I_bf, I_arc_600, I_arc, T, CF, lg_Ibf, lg_gap): #>>>>> NOTE: SISTEMAS MAYORES A 208V Y MENORES A 600V <<<<<
     #>>>>>>> NOTE: PASO 4 <<<<<<<
     lg_dis = math.log10(dis)  #logaritmo base 10 de "dis"
     lg_Iarc = math.log10(I_arc)
@@ -521,20 +520,22 @@ def calc_E_AFB1 (dis, EC, I_bf, I_arc_600, I_arc, T, CF, lg_Ibf, lg_gap):
     #>>>>>>> NOTE: PASO 6 <<<<<<<
     lg_T = math.log10(20/T)
     AFB_600_menor = ecuacion_10 (EC, I_bf, lg_T, lg_Ibf, lg_gap, I_arc_600, lg_Iarc, lg_CF)
+    print (">>> Valor intermedio del limite de arco eléctrico <<<\n", "AFB_600_menor (mm): ", AFB_600_menor, "\n")
 
     #>>>>>>> NOTE: PASO 7 <<<<<<<
     AFB = AFB_600_menor
+    print (">>> Limite de arco final <<<\n", "AFB (mm): ", AFB) 
 
     return E, AFB
 
-def I_arco_inter_min1 (Voc, EC, I_arc_600):
+def I_arco_inter_min1 (Voc, EC, I_arc):
     #>>>>>>> NOTE: PASO 8 <<<<<<<
     VarCF = calcula_VarCF(Voc, EC)
     CF_VarCF = 1-(0.5*VarCF)
     print ("\n>>> Factor de correccion <<<\n", "CF_VarCF: ", CF_VarCF, "\n")
 
-    #>>>>>>> NOTE: PASO 9 <<<<<<< POSIBLEMENTE HACER EL CALCULO DIRECTO DE LA ECUACION 2
-    I_arc_600_min = ecuacion_2 (I_arc_600, CF_VarCF)
+    #>>>>>>> NOTE: PASO 9 <<<<<<< 
+    I_arc_600_min = ecuacion_2 (I_arc, CF_VarCF) #NOTE: Esta ecuacion solo multiplica I_arc * CF_VarCF
     print ("I_arc_600_min: ", I_arc_600_min)
 
     return I_arc_600_min

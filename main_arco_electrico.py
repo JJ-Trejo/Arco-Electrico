@@ -31,24 +31,24 @@ typical_data = {
     "1": { #DATOS PARA VOLTAJES MENORES O IGUAL A 1 kV
         "Switchgear": {"gap": 32, "height": 508, "width": 508, "depth": 508, "workd": 609.6},
         "MCC_shallow": {"gap": 25, "height": 355.6, "width": 304.8, "depth": 203.2, "workd": 457.2},
-        "MCC_deep": {"gap": 25, "height": 355.6, "width": 304.8, "depth": 229, "workd": 457.2},
+        "MCC_deep": {"gap": 25, "height": 355.6, "width": 304.8, "depth": 204, "workd": 457.2},
         "Panelboard_shallow": {"gap": 25, "height": 355.6, "width": 304.8, "depth": 203.2, "workd": 457.2},
-        "Panelboard_deep": {"gap": 25, "height": 355.6, "width": 304.8, "depth": 229, "workd": 457.2},
+        "Panelboard_deep": {"gap": 25, "height": 355.6, "width": 304.8, "depth": 204, "workd": 457.2},
         "Cable_junction_box_shallow": {"gap": 13, "height": 355.6, "width": 304.8, "depth": 203.2, "workd": 457.2},
-        "Cable_junction_box_deep": {"gap": 13, "height": 355.6, "width": 304.8, "depth": 229, "workd": 457.2},
+        "Cable_junction_box_deep": {"gap": 13, "height": 355.6, "width": 304.8, "depth": 204, "workd": 457.2},
     },
     "5": { #DATOS PARA VOLTAJES MENORES O IGUAL A 5 kV
         "Switchgear_large": {"gap": 104, "height": 914.4, "width": 914.4, "depth": 914.4, "workd": 914.4},
         "Switchgear_small": {"gap": 104, "height": 1143, "width": 762, "depth": 762, "workd": 914.4},
         "MCC": {"gap": 104, "height": 660.4, "width": 660.4, "depth": 660.4, "workd": 914.4},
         "Cable_junction_box_shallow": {"gap": 13, "height": 355.6, "width": 304.8, "depth": 203.2, "workd": 457.2},
-        "Cable_junction_box_deep": {"gap": 13, "height": 355.6, "width": 304.8, "depth": 229, "workd": 457.2},
+        "Cable_junction_box_deep": {"gap": 13, "height": 355.6, "width": 304.8, "depth": 204, "workd": 457.2},
     },
     "15": { #DATOS PARA VOLTAJES MENORES O IGUAL A 15 kV
         "Switchgear": {"gap": 152, "height": 1143, "width": 762, "depth": 762, "workd": 914.4},
         "MCC": {"gap": 152, "height": 914.4, "width": 914.4, "depth": 914.4, "workd": 914.4},
         "Cable_junction_box_shallow": {"gap": 13, "height": 355.6, "width": 304.8, "depth": 203.2, "workd": 457.2},
-        "Cable_junction_box_deep": {"gap": 13, "height": 355.6, "width": 304.8, "depth": 229, "workd": 457.2},
+        "Cable_junction_box_deep": {"gap": 13, "height": 355.6, "width": 304.8, "depth": 204, "workd": 457.2},
     }
 }
 

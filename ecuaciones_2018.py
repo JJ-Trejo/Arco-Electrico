@@ -60,7 +60,7 @@ def obtener_parametros_afp_min1(system_data):
     I_bf   = float( system_data["I_bf"] )
     gap    = float( system_data["gap"] )
     dis    = float( system_data["dis"] )
-    I_arc_600_min = float( system_data["I_arc_600_min"] )
+    I_arc_600 = float( system_data["I_arc_600"] )
     I_arc_min = float( system_data["I_arc_min"] )
     Tmin = float( system_data["Tfalla_min"] )
     CF = float( system_data["CF"] )
@@ -68,7 +68,7 @@ def obtener_parametros_afp_min1(system_data):
     lg_Ibf = math.log10(I_bf) #logaritmo base 10 de "I_bf"
     lg_gap = math.log10(gap)  #logaritmo base 10 de "gap"
     
-    return dis, EC, I_bf, I_arc_600_min, I_arc_min, Tmin, CF, lg_Ibf, lg_gap
+    return dis, EC, I_bf, I_arc_600, I_arc_min, Tmin, CF, lg_Ibf, lg_gap
 
 def obtener_parametros_afp_min2(system_data):
     #Obtiene los parametros del diccionario recibido
@@ -502,11 +502,11 @@ def calc_E_AFB2 (dis, EC, I_bf, I_arc_600, I_arc_2700, I_arc_14300, T, CF, Voc, 
         print (">>> Limite de arco final <<<\n", "AFB (mm): ", AFB, "\n")
 
     return E, AFB
-
+                #dis, EC, I_bf, I_arc_600_min, I_arc_min, Tmin, CF, lg_Ibf, lg_gap Datos recibidos de la fucnion main_afp_min
 def calc_E_AFB1 (dis, EC, I_bf, I_arc_600, I_arc, T, CF, lg_Ibf, lg_gap): #>>>>> NOTE: SISTEMAS MAYORES A 208V Y MENORES A 600V <<<<<
     #>>>>>>> NOTE: PASO 4 <<<<<<<
     lg_dis = math.log10(dis)  #logaritmo base 10 de "dis"
-    lg_Iarc = math.log10(I_arc)
+    lg_Iarc = math.log10(I_arc) #main_afp: I_arc | main_afp_min: I_arc_min
     lg_CF = math.log10(1/CF)
     E_600_menor = ecuacion_3456 (tabla_3, EC, T, I_bf, lg_Ibf, lg_gap, lg_dis, lg_Iarc, lg_CF, I_arc_600)
     print("E_600_menor: ", E_600_menor, "\n")

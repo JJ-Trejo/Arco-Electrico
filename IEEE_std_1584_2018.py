@@ -47,7 +47,7 @@ def main_afp(dic_system_data):
         CF = calcula_CF (enclosure_type, EC, width, height, Box_type, Voc) #NOTE: PASO 3 
         # energia_incidente & limite_arco_electrico
         E, AFB = calc_E_AFB1 ( dis, EC, I_bf, I_arc_600, I_arc, T, CF, lg_Ibf, lg_gap) #NOTE: PASO 4,5,6,7
-        I_arc_600_min = I_arco_inter_min1 (Voc, EC, I_arc) #NOTE: PASO 8,9 (I_arc_600_min es I_arc_min)
+        I_arc_600_min = I_arco_inter_min1 (Voc, EC, I_arc) #NOTE: PASO 8,9 (I_arc_600_min es lo mismo que I_arc_min)
         I_arc_min = I_arco_fin_min1 (I_arc_600_min) #NOTE: PASO 10 (Este paso no hace nada, pero se coloca para mantener la semejanza de funciones con Voc > 0.600 kV)
         dic_system_data["CF"] = CF
         dic_system_data["E"] = E
@@ -85,9 +85,9 @@ def main_afp_min(dic_system_data):
     Voc = float( dic_system_data["Voc"] )
     #>>>>> NOTE: SISTEMAS MAYORES A 208V Y MENORES A 600V <<<<<
     if Voc >= 0.208 and Voc <= 0.600:
-        dis, EC, I_bf, I_arc_600_min, I_arc_min, Tmin, CF, lg_Ibf, lg_gap = obtener_parametros_afp_min1(dic_system_data)
+        dis, EC, I_bf, I_arc_600, I_arc_min, Tmin, CF, lg_Ibf, lg_gap = obtener_parametros_afp_min1(dic_system_data)
         # energia_incidente_limite_arco_electrico   
-        E, AFB = calc_E_AFB1 ( dis, EC, I_bf, I_arc_600_min, I_arc_min, Tmin, CF, lg_Ibf, lg_gap) #NOTE: PASO 4,5,6,7   #NOTE: REVISAR IARCMIN ##################################################
+        E, AFB = calc_E_AFB1 ( dis, EC, I_bf, I_arc_600, I_arc_min, Tmin, CF, lg_Ibf, lg_gap) #NOTE: PASO 4,5,6,7
         dic_system_data["E_min"] = E
         dic_system_data["AFB_min"] = AFB
         print("Datos recopilados:")

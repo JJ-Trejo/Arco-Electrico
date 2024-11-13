@@ -54,7 +54,7 @@ typical_data = {
 
 typical_data_2002 = {
     "1": { #DATOS PARA VOLTAJES MENORES O IGUAL A 1 kV
-        "Switchgear": {"gap": 32, "workd": 610, "xfactor":1.473},
+        "Switchgear": {"gap": 32, "workd": 609.6, "xfactor":1.473},
         "MCC":        {"gap": 25, "workd": 455, "xfactor":1.641},
         "Panelboard": {"gap": 25, "workd": 455, "xfactor":1.641},
         "Cable":      {"gap": 13, "workd": 455, "xfactor":2.0},

@@ -31,6 +31,7 @@ def ecuacion_4 (K1, K2, lg_Ia, gap, Cf, tfalla, dis, xfactor):
     print ("tfalla: ", tfalla)
     print ("dis: ", dis)
     print ("xfactor: ", xfactor, "\n")
+    print (">>> Energia Incidente normalizada <<<\n", "En (J/mc2): ", En, "\n")
     print (">>> Energia Incidente final <<<\n", "E (J/mc2): ", E)
     E = E/4.184 #Convierte la energia incidente a cal/cm2
     print ("E (cal/cm2): ", E, "\n") 
@@ -203,7 +204,8 @@ def main_afp_2002(dic_system_data):
     dic_system_data["lg_En"] = lg_En
     dic_system_data["En"] = En
     dic_system_data["E"] = E
-    EB = 5.0
+    EB = 5.0208 # J/cm2 
+    # EB = 1.2 cal/cm2
     dic_system_data["EB"] = EB
     AFB = ecuacion_8(Cf, En, tfalla, EB, xfactor) #Calculo flash protection boundary
     dic_system_data["AFB"] = AFB

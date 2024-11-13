@@ -221,7 +221,7 @@ def main_afpmin_2002(dic_system_data):
     dic_system_data["lg_En_min"] = lg_En_min
     dic_system_data["En_min"] = En_min
     dic_system_data["E_min"] = E_min
-    EB_min = 5.0
+    EB_min = 5.0208
     dic_system_data["EB_min"] = EB_min
     AFB_min = ecuacion_8(Cf, En_min, tfalla_min, EB_min, xfactor) #Calculo flash protection boundary
     dic_system_data["AFB_min"] = AFB_min

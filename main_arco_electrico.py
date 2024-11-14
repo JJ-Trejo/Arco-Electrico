@@ -54,7 +54,7 @@ typical_data = {
 
 typical_data_2002 = {
     "1": { #DATOS PARA VOLTAJES MENORES O IGUAL A 1 kV
-        "Switchgear": {"gap": 32, "workd": 609.6, "xfactor":1.473},
+        "Switchgear": {"gap": 32, "workd": 610, "xfactor":1.473},
         "MCC":        {"gap": 25, "workd": 455, "xfactor":1.641},
         "Panelboard": {"gap": 25, "workd": 455, "xfactor":1.641},
         "Cable":      {"gap": 13, "workd": 455, "xfactor":2.0},
@@ -765,7 +765,7 @@ def ventana_toplevel_2002():
         lb_tfalla_2002_u = tk.Label(res_2002_iarc, text="ms")
         lb_tfalla_2002_u.grid(row=1, column=2, sticky="w", padx=5, pady=5)
         # >>>>> BOTON Liberacion de la falla | IEEE 1584 2002
-        boton_afp_2002 = tk.Button(res_2002_iarc, text="BOTON 1", background="green", command= actualiza_tfalla_2002)
+        boton_afp_2002 = tk.Button(res_2002_iarc, text="Calcular", background="green", command= actualiza_tfalla_2002)
         boton_afp_2002.grid(row=2, column=1, columnspan=3, sticky="w", padx=5, pady=5)
 
         # ******************** CONTENEDOR RESULTADO arc flash protection | IEEE 1584 2002 ********************
@@ -835,7 +835,7 @@ def ventana_toplevel_2002():
         lb_tfallamin_2002_u = tk.Label(res_2002_iarcmin, text="ms")
         lb_tfallamin_2002_u.grid(row=1, column=2, sticky="w", padx=5, pady=5)
         # >>>>> BOTON Liberacion de la falla reducida | IEEE 1584 2002
-        boton_afpmin_2002 = tk.Button(res_2002_iarcmin, text="BOTON 2", background="green", command=actualiza_tfallamin_2002, state="disabled")
+        boton_afpmin_2002 = tk.Button(res_2002_iarcmin, text="Calcular", background="green", command=actualiza_tfallamin_2002, state="disabled")
         boton_afpmin_2002.grid(row=2, column=1, columnspan=3, sticky="w", padx=5, pady=5)
 
         # ******************** CONTENEDOR RESULTADO arc flash protection reducida | IEEE 1584 2002 ********************
@@ -1246,7 +1246,7 @@ def ventana_toplevel_2018():
             lb_tfalla_voa_2018_u = tk.Label(res_voa_iarc, text="ms")
             lb_tfalla_voa_2018_u.grid(row=1, column=2, sticky="w", padx=5, pady=5)
             # >>>>> BOTON Liberacion de la falla | IEEE 1584 2018
-            boton_voa = tk.Button(res_voa_iarc, text="BOTON 1_1", background="green", command= actualiza_tfalla_voa_2018)
+            boton_voa = tk.Button(res_voa_iarc, text="Calcular", background="green", command= actualiza_tfalla_voa_2018)
             boton_voa.grid(row=2, column=1, columnspan=3, sticky="w", padx=5, pady=5)
 
             # ******************** CONTENEDOR RESULTADO arc flash protection | IEEE 1584 2018 ********************
@@ -1308,7 +1308,7 @@ def ventana_toplevel_2018():
             lb_tfallamin_voa_2018_u = tk.Label(res_voa_iarcmin, text="ms")
             lb_tfallamin_voa_2018_u.grid(row=1, column=2, sticky="w", padx=5, pady=5)
             # >>>>> BOTON Liberacion de la falla reducida | IEEE 1584 2018
-            boton_1_2 = tk.Button(res_voa_iarcmin, text="BOTON 1_2", background="green", command=actualiza_tfallamin_voa_2018, state="disabled")
+            boton_1_2 = tk.Button(res_voa_iarcmin, text="Calcular", background="green", command=actualiza_tfallamin_voa_2018, state="disabled")
             boton_1_2.grid(row=2, column=1, columnspan=3, sticky="w", padx=5, pady=5)
 
             # ******************** CONTENEDOR RESULTADO arc flash protection reducida | IEEE 1584 2018 ********************
@@ -1372,7 +1372,7 @@ def ventana_toplevel_2018():
             lb_tfalla_hoa_2018_u = tk.Label(res_hoa_iarc, text="ms")
             lb_tfalla_hoa_2018_u.grid(row=1, column=2, sticky="w", padx=5, pady=5)
             # >>>>> BOTON Liberacion de la falla | IEEE 1584 2018
-            boton_hoa = tk.Button(res_hoa_iarc, text="BOTON 2_1", background="green", command= actualiza_tfalla_hoa_2018)
+            boton_hoa = tk.Button(res_hoa_iarc, text="Calcular", background="green", command= actualiza_tfalla_hoa_2018)
             boton_hoa.grid(row=2, column=1, columnspan=3, sticky="w", padx=5, pady=5)
 
             # ******************** CONTENEDOR RESULTADO arc flash protection | IEEE 1584 2018 ********************
@@ -1434,7 +1434,7 @@ def ventana_toplevel_2018():
             lb_tfallamin_hoa_2018_u = tk.Label(res_hoa_iarcmin, text="ms")
             lb_tfallamin_hoa_2018_u.grid(row=1, column=2, sticky="w", padx=5, pady=5)
             # >>>>> BOTON Liberacion de la falla reducida | IEEE 1584 2018
-            boton_2_2 = tk.Button(res_hoa_iarcmin, text="BOTON 2_2", background="green", command=actualiza_tfallamin_hoa_2018, state="disabled")
+            boton_2_2 = tk.Button(res_hoa_iarcmin, text="Calcular", background="green", command=actualiza_tfallamin_hoa_2018, state="disabled")
             boton_2_2.grid(row=2, column=1, columnspan=3, sticky="w", padx=5, pady=5)
 
             # ******************** CONTENEDOR RESULTADO arc flash protection reducida | IEEE 1584 2018 ********************
@@ -1504,7 +1504,7 @@ def ventana_toplevel_2018():
             lb_tfalla_vcb_2018_u = tk.Label(res_vcb_iarc, text="ms")
             lb_tfalla_vcb_2018_u.grid(row=1, column=2, sticky="w", padx=5, pady=5)
             # >>>>> BOTON Liberacion de la falla | IEEE 1584 2018
-            boton_vcb = tk.Button(res_vcb_iarc, text="BOTON 3", background="green", command= actualiza_tfalla_vcb_2018)
+            boton_vcb = tk.Button(res_vcb_iarc, text="Calcular", background="green", command= actualiza_tfalla_vcb_2018)
             boton_vcb.grid(row=2, column=1, columnspan=3, sticky="w", padx=5, pady=5)
 
             # ******************** CONTENEDOR RESULTADO arc flash protection | IEEE 1584 2018 ********************
@@ -1566,7 +1566,7 @@ def ventana_toplevel_2018():
             lb_tfallamin_vcb_2018_u = tk.Label(res_vcb_iarcmin, text="ms")
             lb_tfallamin_vcb_2018_u.grid(row=1, column=2, sticky="w", padx=5, pady=5)
             # >>>>> BOTON Liberacion de la falla reducida | IEEE 1584 2018
-            boton_4 = tk.Button(res_vcb_iarcmin, text="BOTON 4", background="green", command=actualiza_tfallamin_vcb_2018, state="disabled")
+            boton_4 = tk.Button(res_vcb_iarcmin, text="Calcular", background="green", command=actualiza_tfallamin_vcb_2018, state="disabled")
             boton_4.grid(row=2, column=1, columnspan=3, sticky="w", padx=5, pady=5)
 
             # ******************** CONTENEDOR RESULTADO arc flash protection reducida | IEEE 1584 2018 ********************
@@ -1629,7 +1629,7 @@ def ventana_toplevel_2018():
             lb_tfalla_vcbb_2018_u = tk.Label(res_vcbb_iarc, text="ms")
             lb_tfalla_vcbb_2018_u.grid(row=1, column=2, sticky="w", padx=5, pady=5)
             # >>>>> BOTON Liberacion de la falla | IEEE 1584 2018
-            boton_5 = tk.Button(res_vcbb_iarc, text="BOTON 5", background="green", command=actualiza_tfalla_vcbb_2018)
+            boton_5 = tk.Button(res_vcbb_iarc, text="Calcular", background="green", command=actualiza_tfalla_vcbb_2018)
             boton_5.grid(row=2, column=1, columnspan=3, sticky="w", padx=5, pady=5)
 
             # ******************** CONTENEDOR RESULTADO arc flash protection | IEEE 1584 2018 ********************
@@ -1691,7 +1691,7 @@ def ventana_toplevel_2018():
             lb_tfallamin_vcbb_2018_u = tk.Label(res_vcbb_iarcmin, text="ms")
             lb_tfallamin_vcbb_2018_u.grid(row=1, column=2, sticky="w", padx=5, pady=5)
             # >>>>> BOTON Liberacion de la falla reducida | IEEE 1584 2018
-            boton_6 = tk.Button(res_vcbb_iarcmin, text="BOTON 6", background="green", command=actualiza_tfallamin_vcbb_2018, state="disabled")
+            boton_6 = tk.Button(res_vcbb_iarcmin, text="Calcular", background="green", command=actualiza_tfallamin_vcbb_2018, state="disabled")
             boton_6.grid(row=2, column=1, columnspan=3, sticky="w", padx=5, pady=5)
 
             # ******************** CONTENEDOR RESULTADO arc flash protection reducida | IEEE 1584 2018 ********************
@@ -1754,7 +1754,7 @@ def ventana_toplevel_2018():
             lb_tfalla_hcb_2018_u = tk.Label(res_hcb_iarc, text="ms")
             lb_tfalla_hcb_2018_u.grid(row=1, column=2, sticky="w", padx=5, pady=5)
             # >>>>> BOTON Liberacion de la falla | IEEE 1584 2018
-            boton_7 = tk.Button(res_hcb_iarc, text="BOTON 7", background="green", command=actualiza_tfalla_hcb_2018)
+            boton_7 = tk.Button(res_hcb_iarc, text="Calcular", background="green", command=actualiza_tfalla_hcb_2018)
             boton_7.grid(row=2, column=1, columnspan=3, sticky="w", padx=5, pady=5)
 
             # ******************** CONTENEDOR RESULTADO arc flash protection | IEEE 1584 2018 ********************
@@ -1816,7 +1816,7 @@ def ventana_toplevel_2018():
             lb_tfallamin_hcb_2018_u = tk.Label(res_hcb_iarcmin, text="ms")
             lb_tfallamin_hcb_2018_u.grid(row=1, column=2, sticky="w", padx=5, pady=5)
             # >>>>> BOTON Liberacion de la falla reducida | IEEE 1584 2018
-            boton_8 = tk.Button(res_hcb_iarcmin, text="BOTON 8", background="green", command=actualiza_tfallamin_hcb_2018, state="disabled")
+            boton_8 = tk.Button(res_hcb_iarcmin, text="Calcular", background="green", command=actualiza_tfallamin_hcb_2018, state="disabled")
             boton_8.grid(row=2, column=1, columnspan=3, sticky="w", padx=5, pady=5)
 
             # ******************** CONTENEDOR RESULTADO arc flash protection reducida | IEEE 1584 2018 ********************

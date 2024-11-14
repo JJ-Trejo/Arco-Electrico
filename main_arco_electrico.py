@@ -696,7 +696,8 @@ def ventana_toplevel_2002():
             # print (system_data_2002)
 
         def actualiza_tfallamin_2002():
-            system_data_2002["I_arc_min"] = var_iarcmin_2002.get() #Se añade el valor de I_arc reducida al diccionario
+            porcentaje_iarc = float(system_data_2002["I_arc"]) - (float(system_data_2002["I_arc"])*(iarc_variation.get()/100))
+            system_data_2002["I_arc_min"] = porcentaje_iarc #Se añade el valor de I_arc reducida al diccionario
             system_data_2002["Tfalla_min"] = float(var_tfallamin_2002.get())/1000 #Obtiene el valor de Tfalla ingresado por el usuario y lo convierte en segundos
             main_afpmin_2002 (system_data_2002) #Llama a la función que calcula E y AFB
             var_emin_2002.set("{:.3f}".format(system_data_2002["E_min"])) #Muestra el valor de la energia incidente en la pantalla

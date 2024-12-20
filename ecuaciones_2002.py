@@ -174,6 +174,7 @@ def main_2002 (dic_system_data):
     dic_system_data["K1"] = K1
     dic_system_data["K2"] = K2
     dic_system_data["Cf"] = Cf
+    dic_system_data["lg_Ibf"] = lg_Ibf
 
     if Voc >= 0.208 and Voc <= 1:
         #ARCING CURRENT

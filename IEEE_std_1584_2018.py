@@ -5,7 +5,6 @@ import numpy as np
 from tablas_2018 import Box_type #Se importan las tablas (diccionarios) de la IEEE Std. 1584-2018
 #Se importan las ecuaciones (funciones) de la IEEE Std. 1584-2018
 from ecuaciones_2018 import obtener_parametros_main, obtener_parametros_afp1, obtener_parametros_afp2, obtener_parametros_afp_min1, obtener_parametros_afp_min2, I_arco_inter1, I_arco_fin1, I_arco_inter2, I_arco_fin2, lee_duracion_t, enclosure, calcula_CF, calc_E_AFB2, calc_E_AFB1, I_arco_inter_min1, I_arco_fin_min1, I_arco_inter_min2, I_arco_fin_min2
-from imprimir import imprime
 
 def main (dic_system_data):
     print ("#################### INICIO main | I_arc | ", dic_system_data["EC"] ,  " ####################", "\n")
